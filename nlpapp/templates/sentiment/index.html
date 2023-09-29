@@ -1,0 +1,41 @@
+{% extends "sentiment/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <main>
+        <h1>Sentiment Analysis</h1>
+        <form>
+            <textarea></textarea>
+            <input type="submit" value="Analyze"/>
+        </form>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if predictions %}
+                        {% for class, prediction in predictions %}
+                            <tr>
+                                <td>{{ class }}</td>
+                                <td>{{ prediction }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>N/A</td>
+                            <td>N/A</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock content %}
