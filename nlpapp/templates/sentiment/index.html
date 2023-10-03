@@ -7,35 +7,43 @@
 
 {% block content %}
     <main>
-        <h1>Sentiment Analysis</h1>
-        <form>
-            <textarea></textarea>
-            <input type="submit" value="Analyze"/>
-        </form>
-        <div>
-            <table>
+        <div id="heading-div">
+            <h1>Sentiment Analysis</h1>
+            <h5>Test whether your text shows negative, neutral, or positive emotions!</h5>
+        </div>
+        <div id="form-div">
+            <form action="" method="post">
+                {% csrf_token %}
+                <textarea name="text" id="fld-text" placeholder="Type your text here..."></textarea>
+                <input type="submit" id="btn-submit" value="Analyze"><i class="bi bi-send"></i></input>
+            </form>
+        </div>
+        
+        <div id="results-div">
+            <h5>Classification Results</h5>
+            <table class="table table-striped table-hover table-light table-bordered table-sm">
                 <thead>
                     <tr>
-                        <th>Class</th>
-                        <th>Confidence</th>
+                        <th scope="col">Class</th>
+                        <th scope="col">Confidence</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     {% if predictions %}
-                        {% for class, prediction in predictions %}
-                            <tr>
-                                <td>{{ class }}</td>
-                                <td>{{ prediction }}</td>
-                            </tr>
-                        {% endfor %}
+                    {% for class, prediction in predictions %}
+                        <tr>
+                            <td scope="row">{{ class }}</td>
+                            <td>{{ prediction }}</td>
+                        </tr>
+                    {% endfor %}
                     {% else %}
                         <tr>
-                            <td>N/A</td>
-                            <td>N/A</td>
+                            <td scope="row">hi</td>
+                            <td>test</td>
                         </tr>
-                    {% endif %}
                 </tbody>
             </table>
         </div>
+        {% endif %}
     </main>
 {% endblock content %}

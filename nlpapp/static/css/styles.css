@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* won't exceed specified width and height */
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* column = vertical */
+    align-items: center;
+    padding: 20px;
+    z-index: 0; /* places this as a bottom layer */
+    background: url("../imgs/bg.jpg") top center;
+    background-size: 500px 500px;
+}
+
+main:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.70);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+
+div {
+    margin: 2vh;
+    padding: 2vh;
+    width: 80vw;
+    z-index: 5;
+    background-color: rgba(201, 207, 243, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    border: 2px solid rgba(126, 138, 202, 1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.35);
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 70vw;
+}
+
+textarea {
+    flex: 1;
+    padding: 1vh;
+    margin: 1vh;
+    border-radius: 10px;
+    border: 2px solid rgba(126, 138, 202, 0.7);
+}
+
+#btn-submit {
+    height: 10vh;
+    padding: 1vh;
+    margin: 1vh;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid rgba(126, 138, 202, 0.7);
+    color: white;
+    background: rgba(126, 138, 202, 0.7);
+}
+
+#btn-submit:hover {
+    border: 2px solid rgba(126, 138, 202, 0.7);
+    color: rgba(126, 138, 202, 0.7);
+    background: white;
+    box-shadow: 0px 0px 20px rgba(126, 138, 202, 0.35);
+}
+
+table {
+    border-radius: 10px;
+}
+
+#results-div {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
