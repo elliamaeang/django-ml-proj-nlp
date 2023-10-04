@@ -1,18 +1,20 @@
+/* GENERAL */
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* won't exceed specified width and height */
+    box-sizing: border-box;
 }
 
 main {
     min-height: 100vh;
     position: relative;
     display: flex;
-    flex-direction: column; /* column = vertical */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    z-index: 0; /* places this as a bottom layer */
+    z-index: 0;
     background: url("../imgs/bg.jpg") top center;
     background-size: 500px 500px;
     background-repeat: repeat;
@@ -29,7 +31,6 @@ main:before {
     right: 0;
 }
 
-
 div {
     margin: 2vh;
     padding: 2vh;
@@ -43,6 +44,21 @@ div {
     border: 3px solid white; /*rgba(126, 138, 202, 1);*/
     box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.5);
 }
+
+h1, h3, h5 {
+    text-align: center;
+}
+
+h1, h3 {
+    font-family: 'Lilita One', cursive;
+    text-transform: uppercase;
+    color: white;
+    -webkit-text-stroke: 1px rgba(69,77,107,1);
+    letter-spacing: 0.25rem;
+    text-shadow: 0px 3px 10px rgba(86, 156, 217, 1);
+}
+
+/* INPUT FORM */
 
 form {
     display: flex;
@@ -86,6 +102,8 @@ textarea:hover {
     background: white;
     box-shadow: 0px 0px 20px rgba(69,77,107,0.7); /*rgba(86, 156, 217, 0.7);*/
 }
+
+/* ANALYSIS RESULTS */
 
 #row-div, #left-div, #smiley-div, #table-div, #chart-div {
     padding: 0;
@@ -175,17 +193,10 @@ img {
     color: #fb6353;
 }
 
-h1, h3, h5 {
-    text-align: center;
-}
-
-h1, h3 {
-    font-family: 'Lilita One', cursive;
-    text-transform: uppercase;
-    color: white;
-    -webkit-text-stroke: 1px rgba(69,77,107,1);
-    letter-spacing: 0.25rem;
-    text-shadow: 0px 3px 10px rgba(86, 156, 217, 1);
+#p-smiley {
+    font-size: 14px; 
+    margin-top: 0.5rem; 
+    margin-bottom: 0;
 }
 
 #p-text {
