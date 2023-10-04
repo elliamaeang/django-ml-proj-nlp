@@ -1,6 +1,6 @@
 
 var xValues = ["Negative", "Neutral", "Positive"];
-var barColors = ["#e96258", "#efce42", "#3cb14f"];
+var barColors = ["#fb6353", "#fbcf6a", "#94e36b"];
 
 new Chart("pie-chart", {
     type: "pie",
