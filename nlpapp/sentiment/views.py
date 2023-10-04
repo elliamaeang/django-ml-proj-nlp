@@ -1,5 +1,5 @@
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from sentiment.forms import SentimentForm
 from sentiment.ml_model import MLConfig
 import numpy as np
@@ -32,7 +32,9 @@ def analyze(request):
     targets = ml.targets # get targets
     colors = ml.colors # get colors (for UI)
 
+    # Check if view accessed through form submission
     if request.method == 'POST':
+
         # Pass form results
         form = SentimentForm(request.POST)
 
@@ -63,7 +65,12 @@ def analyze(request):
             proba_classes = zip(targets, probas, colors) # zip() used to combine the parameters into one list of tuples
             proba_classes = sorted(proba_classes, key=lambda x: x[1], reverse=True) # sort from highest to lowest
 
-                    
+    else: # If view accessed through URL
+
+        # Redirect to index
+        return HttpResponseRedirect('/')
+
+    # This part of the code is only reached if form submitted and valid
     template = loader.get_template('sentiment/index.html')
     context = {
         'form': form,
