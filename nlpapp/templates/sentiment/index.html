@@ -3,7 +3,22 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Mooli&display=swap" rel="stylesheet">
 {% endblock styles %}
+
+{% block js %}
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script>
+        var yValues = [30, 20, 30];
+    </script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+{% endblock js %}
 
 {% block content %}
     <main>
@@ -11,39 +26,65 @@
             <h1>Sentiment Analysis</h1>
             <h5>Test whether your text shows negative, neutral, or positive emotions!</h5>
         </div>
-        <div id="form-div">
-            <form action="" method="post">
-                {% csrf_token %}
-                <textarea name="text" id="fld-text" placeholder="Type your text here..."></textarea>
-                <input type="submit" id="btn-submit" value="Analyze"><i class="bi bi-send"></i></input>
-            </form>
-        </div>
+        
         
         <div id="results-div">
-            <h5>Classification Results</h5>
-            <table class="table table-striped table-hover table-light table-bordered table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Class</th>
-                        <th scope="col">Confidence</th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    {% if predictions %}
-                    {% for class, prediction in predictions %}
-                        <tr>
-                            <td scope="row">{{ class }}</td>
-                            <td>{{ prediction }}</td>
-                        </tr>
-                    {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td scope="row">hi</td>
-                            <td>test</td>
-                        </tr>
-                </tbody>
-            </table>
+            <h3>Prediction Results</h3>
+            <div id="row-div">
+                <div id="left-div">
+                    <div id="smiley-div">
+                        <img id="img-pos" src="{% static 'imgs/positive.png' %}" />
+                        <!--<img id="img-neu" src="{% static 'imgs/neutral.png' %}" />
+                        <img id="img-neg" src="{% static 'imgs/negative.png' %}" />-->
+                        <h5>Negative</h5>
+                    </div>
+
+                    <div id="table-div">
+                        <table class="table table-striped table-hover table-light table-bordered table-sm text-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="w-50">Sentiment Class</th>
+                                    <th scope="col">Confidence Level</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                {% if predictions %}
+                                {% for class, prediction in predictions %}
+                                    <tr>
+                                        <td scope="row">{{ class }}</td>
+                                        <td>{{ prediction }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% endif %}
+                                    <tr>
+                                        <td scope="row">Negative</td>
+                                        <td>30%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Negative</td>
+                                        <td>30%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Negative</td>
+                                        <td>30%</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="chart-div">
+                    <canvas id="pie-chart"></canvas>
+                </div>
+            </div>
         </div>
-        {% endif %}
+
+        <div id="form-div">
+            <h3>Input Text</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                <textarea name="text" id="fld-text" placeholder="Type your text here..." required></textarea>
+                <button type="submit" id="btn-submit"><i class="bi bi-send-fill"></i></button>
+            </form>
+        </div>
     </main>
 {% endblock content %}
