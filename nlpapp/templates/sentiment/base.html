@@ -1,3 +1,4 @@
+<!-- Base Template HTML -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -5,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% include "sentiment/css.html" %}
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/icon.png' %}">
     <title>Sentiment Analysis</title>
     {% block styles %}{% endblock styles %}
 </head>

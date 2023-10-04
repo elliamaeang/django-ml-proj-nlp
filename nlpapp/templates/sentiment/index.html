@@ -2,24 +2,16 @@
 {% load static %}
 
 {% block styles %}
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static 'imgs/icon.png' %}">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Mooli&display=swap" rel="stylesheet">
 {% endblock styles %}
 
 {% block js %}
+    <!-- Only called when form is submitted -->
+    {% if classes %}
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
-    <!-- Only called when form is submitted -->
-    {% if classes %}
     <script>
         var percent = {{ probas }}; // set values for the slices of the pie chart
     </script>
