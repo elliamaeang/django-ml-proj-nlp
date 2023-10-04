@@ -15,28 +15,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <script>
-        var yValues = [30, 20, 30];
+        var yValues = [30, 40, 30];
     </script>
     <script src="{% static 'js/scripts.js' %}"></script>
 {% endblock js %}
 
 {% block content %}
     <main>
-        <div id="heading-div">
+        <div>
             <h1>Sentiment Analysis</h1>
             <h5>Test whether your text shows negative, neutral, or positive emotions!</h5>
+            <p style="font-size: 12px; margin-bottom: 1vh;"><i>Disclaimer:</i> The model used only has <b>64.72%</b> accuracy and <b>64.62%</b> F1 score.</p>
         </div>
         
-        
-        <div id="results-div">
-            <h3>Prediction Results</h3>
+        {% if predictions %}
+        <div>
+            <h3>Text Analyzed</h3>
+            <p id="p-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+        </div>
+
+        <div>
+            <h3>Analysis Results</h3>
             <div id="row-div">
                 <div id="left-div">
                     <div id="smiley-div">
-                        <img id="img-pos" src="{% static 'imgs/positive.png' %}" />
-                        <!--<img id="img-neu" src="{% static 'imgs/neutral.png' %}" />
-                        <img id="img-neg" src="{% static 'imgs/negative.png' %}" />-->
-                        <h5>Negative</h5>
+                        <p style="font-size: 14px; margin-top: 0.5rem; margin-bottom: 0;"><b>The text is:</b></p>
+                        <img id="img-positive" src="{% static 'imgs/positive.png' %}" />
+                        <h5 id="text-positive">Positive</h5>
+                        <img id="img-neutral" src="{% static 'imgs/neutral.png' %}" />
+                        <h5 id="text-neutral">Neutral</h5>
+                        <img id="img-negative" src="{% static 'imgs/negative.png' %}" />
+                        <h5 id="text-negative">Negative</h5>
                     </div>
 
                     <div id="table-div">
@@ -61,11 +70,11 @@
                                         <td>30%</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">Negative</td>
-                                        <td>30%</td>
+                                        <td scope="row">Neutral</td>
+                                        <td>40%</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">Negative</td>
+                                        <td scope="row">Positive</td>
                                         <td>30%</td>
                                     </tr>
                             </tbody>
@@ -77,8 +86,9 @@
                 </div>
             </div>
         </div>
+        {% endif %}
 
-        <div id="form-div">
+        <div>
             <h3>Input Text</h3>
             <form action="" method="post">
                 {% csrf_token %}
