@@ -6,6 +6,9 @@ import contractions
 
 class MLConfig():
     def __init__(self):
+        '''
+            This initializes the model and its variables.
+        '''
         # Load from joblib
         self.model = joblib.load(os.path.join(settings.BASE_DIR, "models/sentiment_clf.joblib"))
         self.vectorizer = joblib.load(os.path.join(settings.BASE_DIR, "models/vectorizer.save"))
